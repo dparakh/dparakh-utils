@@ -1,6 +1,6 @@
 # dparakh-utils README
 
-This is the README for your extension "dparakh-utils". After writing up a brief description, we recommend including the following sections.
+Some utilities for my personal use.
 
 ## Features
 

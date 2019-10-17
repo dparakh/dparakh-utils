@@ -2,6 +2,7 @@
 	"name": "dparakh-utils",
 	"displayName": "dparakh-utils",
 	"description": "General Utility commands for use",
+	"publisher" : "dparakh",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.39.0"
@@ -10,14 +11,19 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"onCommand:extension.p4edit",
+		"onCommand:extension.p4revert"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
+				"command": "extension.p4edit",
+				"title": "p4edit"
+			},
+			{
+				"command": "extension.p4revert",
+				"title": "p4revert"
 			}
 		]
 	},
