@@ -3,6 +3,10 @@
 	"displayName": "dparakh-utils",
 	"description": "General Utility commands for use",
 	"publisher" : "dparakh",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/dparakh/dparakh-utils.git"
+	},
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.39.0"
