@@ -12,7 +12,8 @@
 	],
 	"activationEvents": [
 		"onCommand:extension.p4edit",
-		"onCommand:extension.p4revert"
+		"onCommand:extension.p4revert",
+		"onCommand:extension.p4blame"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -24,6 +25,10 @@
 			{
 				"command": "extension.p4revert",
 				"title": "p4revert"
+			},
+			{
+				"command": "extension.p4blame",
+				"title": "p4blame"
 			}
 		]
 	},

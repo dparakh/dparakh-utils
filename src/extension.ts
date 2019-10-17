@@ -30,6 +30,14 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
+	let disposable3 = vscode.commands.registerCommand('extension.p4blame', () => {
+		// The code you place here will be executed every time your command is executed
+		const activeEditor = vscode.window.activeTextEditor;
+		if (activeEditor) {
+				sendTextToTerminal ('p4blame.py ' + activeEditor.document.uri.fsPath + ' ' + (activeEditor.selection.start.line+1));
+		}
+	});
+
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(disposable2);
 }
