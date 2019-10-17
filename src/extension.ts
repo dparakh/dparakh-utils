@@ -14,7 +14,7 @@ export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('extension.p4edit', () => {
+	let p4editCommand = vscode.commands.registerCommand('extension.p4edit', () => {
 		// The code you place here will be executed every time your command is executed
 		const activeEditor = vscode.window.activeTextEditor;
 		if (activeEditor) {
@@ -22,7 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
-	let disposable2 = vscode.commands.registerCommand('extension.p4revert', () => {
+	let p4revertCommand = vscode.commands.registerCommand('extension.p4revert', () => {
 		// The code you place here will be executed every time your command is executed
 		const activeEditor = vscode.window.activeTextEditor;
 		if (activeEditor) {
@@ -30,7 +30,7 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
-	let disposable3 = vscode.commands.registerCommand('extension.p4blame', () => {
+	let p4blameCommand = vscode.commands.registerCommand('extension.p4blame', () => {
 		// The code you place here will be executed every time your command is executed
 		const activeEditor = vscode.window.activeTextEditor;
 		if (activeEditor) {
@@ -38,8 +38,9 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
-	context.subscriptions.push(disposable);
-	context.subscriptions.push(disposable2);
+	context.subscriptions.push(p4editCommand);
+	context.subscriptions.push(p4revertCommand);
+	context.subscriptions.push(p4blameCommand);
 }
 
 // this method is called when your extension is deactivated
