@@ -17,7 +17,7 @@ export function activate(context: vscode.ExtensionContext) {
 		// The code you place here will be executed every time your command is executed
 		const activeEditor = vscode.window.activeTextEditor;
 		if (activeEditor) {
-				sendTextToTerminal ('p4 edit ' + activeEditor.document.uri.fsPath);
+				sendTextToTerminal ('p4 edit "' + activeEditor.document.uri.fsPath + '"');
 		}
 	});
 
@@ -25,7 +25,7 @@ export function activate(context: vscode.ExtensionContext) {
 		// The code you place here will be executed every time your command is executed
 		const activeEditor = vscode.window.activeTextEditor;
 		if (activeEditor) {
-				sendTextToTerminal ('p4 revert ' + activeEditor.document.uri.fsPath);
+				sendTextToTerminal ('p4 revert "' + activeEditor.document.uri.fsPath + '"');
 		}
 	});
 
@@ -33,7 +33,7 @@ export function activate(context: vscode.ExtensionContext) {
 		// The code you place here will be executed every time your command is executed
 		const activeEditor = vscode.window.activeTextEditor;
 		if (activeEditor) {
-				sendTextToTerminal ('p4blame.py ' + activeEditor.document.uri.fsPath + ' ' + (activeEditor.selection.start.line+1));
+				sendTextToTerminal ('p4blame.py "' + activeEditor.document.uri.fsPath + '" ' + (activeEditor.selection.start.line+1));
 		}
 	});
 
@@ -49,17 +49,23 @@ function sendTextToTerminal(in_text: string)
 {
 	const activeEditor = vscode.window.activeTextEditor;
 	if (activeEditor) {
-		let activeTerminal = vscode.window.activeTerminal;
+		let workingTerminal = undefined;
 
-		if (activeTerminal) {
+		vscode.window.terminals.forEach( aTerminal => {
+			if (aTerminal.name === "P4") {
+				workingTerminal = aTerminal;
+			}
+		});
+
+		if (workingTerminal) {
 		}
 		else {
-			activeTerminal = vscode.window.createTerminal();
+			workingTerminal = vscode.window.createTerminal("P4");
 		}
 
-		if (activeTerminal) {
-			activeTerminal.sendText(in_text);
-			activeTerminal.show(true);
+		if (workingTerminal) {
+			workingTerminal.sendText(in_text);
+			workingTerminal.show(true);
 		}
 	}
 }
