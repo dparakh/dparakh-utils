@@ -160,6 +160,27 @@ async function keepLines(): Promise<void> {
     }
 }
 
+function getFileEncoding( f: fs.PathLike ) {
+    //var d = new Buffer.alloc(5, [0, 0, 0, 0, 0]);
+    var d = Buffer.alloc(5);
+    var fd = fs.openSync(f, 'r');
+    fs.readSync(fd, d, 0, 5, 0);
+    fs.closeSync(fd);
+
+    // https://en.wikipedia.org/wiki/Byte_order_mark
+    var e = '';
+    if ( e.length == 0 && d[0] === 0xEF && d[1] === 0xBB && d[2] === 0xBF)
+        e = 'utf8';
+    if (e.length == 0 && d[0] === 0xFE && d[1] === 0xFF)
+        e = 'utf16be';
+    if (e.length == 0 && d[0] === 0xFF && d[1] === 0xFE)
+        e = 'utf16le';
+    if (e.length == 0)
+        e = 'utf8';
+
+    return e;
+}
+
 async function addSGMarks(): Promise<void> {
     const markExpressionsFile = os.homedir() + "/Documents/SGDiagBookmarkPhrases.txt"
     const expressionsArray = fs.existsSync(markExpressionsFile) ? fs.readFileSync(markExpressionsFile, "utf8").split(/\r?\n/) : [];
@@ -181,7 +202,7 @@ async function addSGMarks(): Promise<void> {
               else {
                   console.log("Searching: " + uri);
                   var new_bookmarks : Object[] = [];
-                  const fileContents = fs.readFileSync(uri.fsPath, "utf8")
+                  const fileContents = fs.readFileSync(uri.fsPath, getFileEncoding(uri.fsPath))
                   const linesArray = fileContents.split(/\r?\n/);
                   linesArray.forEach((line, lineIndex) => {
                       expressionsArray.forEach((markExpression, exprIndex) => {
