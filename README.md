@@ -50,5 +50,9 @@ Initial release of dparakh-utils
 
 * Added support for UTF-16 encoded files for addsgmarks
 
+### 0.0.6
+
+* Fix Bug : If phrases file has empty lines - all files' all lines are bookmarked.
+
 -----------------------------------------------------------------------------------------------------------
 

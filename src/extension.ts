@@ -183,7 +183,7 @@ function getFileEncoding( f: fs.PathLike ) {
 
 async function addSGMarks(): Promise<void> {
     const markExpressionsFile = os.homedir() + "/Documents/SGDiagBookmarkPhrases.txt"
-    const expressionsArray = fs.existsSync(markExpressionsFile) ? fs.readFileSync(markExpressionsFile, "utf8").split(/\r?\n/) : [];
+    const expressionsArray = fs.existsSync(markExpressionsFile) ? fs.readFileSync(markExpressionsFile, "utf8").split(/\r?\n/).filter(phrase => phrase.length > 0) : [];
     if (expressionsArray.length < 1)
     {
         window.showErrorMessage("Could not find a list of strings to match in " + markExpressionsFile);
