@@ -46,5 +46,9 @@ Initial release of dparakh-utils
 
 * Added addsgmarks command - to automatically generate bookmarks
 
+### 0.0.5
+
+* Added support for UTF-16 encoded files for addsgmarks
+
 -----------------------------------------------------------------------------------------------------------
 
