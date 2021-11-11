@@ -11,6 +11,7 @@ it provides the following commands:
 * p4blame : to show who/which CL was used for the last change to the current line in current file.
 * keeplines : to only keep lines that contain a matching RegEx
 * flushlines : to remove all lines that contain a matching RegEx
+* addsgmarks : to automatically create bookmarks for SG Diagnostic Log reports (needs SGDiagBookmarkPhrases.txt in Documents folder)
 
 ## Requirements
 
@@ -41,6 +42,9 @@ Initial release of dparakh-utils
 
 * Added keeplines and flushlines commands (similar to the emacs keep-lines and flush-lines).
 
+### 0.0.4
+
+* Added addsgmarks command - to automatically generate bookmarks
 
 -----------------------------------------------------------------------------------------------------------
 
