@@ -2,14 +2,14 @@
 	"name": "dparakh-utils",
 	"displayName": "dparakh-utils",
 	"description": "General Utility commands for use",
-	"publisher" : "dparakh",
+	"publisher": "dparakh",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/dparakh/dparakh-utils.git"
 	},
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"engines": {
-		"vscode": "^1.39.0"
+		"vscode": "^1.52.0"
 	},
 	"categories": [
 		"Other"
@@ -20,7 +20,8 @@
 		"onCommand:extension.p4blame",
 		"onCommand:extension.keeplines",
 		"onCommand:extension.flushlines",
-		"onCommand:extension.addsgmarks"
+		"onCommand:extension.addsgmarks",
+		"onCustomEditor:dparakh.dmp"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -36,11 +37,11 @@
 			{
 				"command": "extension.p4blame",
 				"title": "p4blame"
-            },
+			},
 			{
 				"command": "extension.keeplines",
 				"title": "keeplines"
-            },
+			},
 			{
 				"command": "extension.flushlines",
 				"title": "flushlines"
@@ -49,7 +50,33 @@
 				"command": "extension.addsgmarks",
 				"title": "addsgmarks"
 			}
-		]
+		],
+		"customEditors": [
+			{
+				"viewType": "dparakh.dmp",
+				"displayName": "Crash Dump - Windows",
+				"selector": [
+					{
+						"filenamePattern": "*.dmp"
+					}
+				]
+			}
+		],
+		"configuration": {
+			"title" : "Memory Dump (dmp) Viewer",
+			"properties": {
+				"dparakh-utils.dtwlocation" : {
+					"type" : "string",
+					"default" : "C:\\Program Files (x86)\\Windows Kits\\10\\Debuggers\\x64",
+					"description": "Specifies the folder where Debugging Tools For Windows (WinDbg, cdb) are installed."
+				},
+				"dparakh-utils.symlocation" : {
+					"type" : "string",
+					"default" : "srv*d:\\shared\\fdrive\\winsym*https://msdl.microsoft.com/download/symbols;d:\\shared\\fdrive\\wavessym",
+					"description": "Specifies the Symbol path for Debuggers - separated by semi-colons"
+				}
+			}
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
@@ -62,11 +89,11 @@
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^5.2.6",
 		"@types/node": "^10.12.21",
-		"@types/vscode": "^1.39.0",
+		"@types/vscode": "^1.52.0",
 		"glob": "^7.1.4",
 		"mocha": "^6.1.4",
-		"typescript": "^3.3.1",
 		"tslint": "^5.12.1",
+		"typescript": "^3.3.1",
 		"vscode-test": "^1.2.0"
 	}
 }

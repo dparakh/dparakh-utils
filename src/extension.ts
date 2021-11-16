@@ -4,6 +4,7 @@ import * as vscode from "vscode";
 import { window } from 'vscode';
 import * as fs from 'fs';
 import * as os from 'os';
+import { DmpEditorProvider } from './dmpprovider';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -61,6 +62,17 @@ export function activate(context: vscode.ExtensionContext) {
         addSGMarks();
 	});
 
+    let dmpEditor = vscode.window.registerCustomEditorProvider("dparakh.dmp", new DmpEditorProvider(context),
+    {
+        // For this demo extension, we enable `retainContextWhenHidden` which keeps the
+        // webview alive even when it is not visible. You should avoid using this setting
+        // unless is absolutely required as it does have memory overhead.
+        webviewOptions: {
+            retainContextWhenHidden: true,
+        },
+        supportsMultipleEditorsPerDocument: false,
+    });
+
 
 	context.subscriptions.push(p4editCommand);
 	context.subscriptions.push(p4revertCommand);
@@ -68,6 +80,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(keeplinesCommand);
 	context.subscriptions.push(flushlinesCommand);
 	context.subscriptions.push(addsgmarksCommand);
+    context.subscriptions.push(dmpEditor);
 }
 
 // this method is called when your extension is deactivated

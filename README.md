@@ -54,5 +54,9 @@ Initial release of dparakh-utils
 
 * Fix Bug : If phrases file has empty lines - all files' all lines are bookmarked.
 
+### 0.0.7
+
+* Added support for .dmp files (Windows Memory Dumps)
+
 -----------------------------------------------------------------------------------------------------------
 
