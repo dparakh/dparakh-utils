@@ -57,6 +57,11 @@ Initial release of dparakh-utils
 
 ### 0.0.7
 
+=======
+* Added support for .dmp files (Windows Memory Dumps)
+
+### 0.0.8
 * Added p4diff command - runs a diff on the currently loaded file in editor, diff is done within VS Code.
+
 -----------------------------------------------------------------------------------------------------------
 
