@@ -7,7 +7,7 @@
 		"type": "git",
 		"url": "https://github.com/dparakh/dparakh-utils.git"
 	},
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"engines": {
 		"vscode": "^1.39.0"
 	},
@@ -18,6 +18,7 @@
 		"onCommand:extension.p4edit",
 		"onCommand:extension.p4revert",
 		"onCommand:extension.p4blame",
+		"onCommand:extension.p4diff",
 		"onCommand:extension.keeplines",
 		"onCommand:extension.flushlines",
 		"onCommand:extension.addsgmarks"
@@ -36,6 +37,10 @@
 			{
 				"command": "extension.p4blame",
 				"title": "p4blame"
+            },
+			{
+				"command": "extension.p4diff",
+				"title": "p4diff"
             },
 			{
 				"command": "extension.keeplines",

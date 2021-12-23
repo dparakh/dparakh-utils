@@ -40,6 +40,19 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
+	let p4diffCommand = vscode.commands.registerCommand('extension.p4diff', () => {
+		// The code you place here will be executed every time your command is executed
+		const activeEditor = vscode.window.activeTextEditor;
+		if (activeEditor) {
+                if (os.platform() === 'win32') {
+                    sendTextToTerminal('$env:P4DIFF="C:\\Program Files\\Microsoft VS Code\\bin\\code.cmd --diff"; p4 diff "' + activeEditor.document.uri.fsPath + '"');
+                } else {
+                    sendTextToTerminal('P4DIFF="code --diff --wait" p4 diff "' + activeEditor.document.uri.fsPath + '"');
+                }
+		}
+	});
+
+
 	let keeplinesCommand = vscode.commands.registerCommand('extension.keeplines', () => {
 		// The code you place here will be executed every time your command is executed
 		const activeEditor = vscode.window.activeTextEditor;
@@ -65,6 +78,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(p4editCommand);
 	context.subscriptions.push(p4revertCommand);
 	context.subscriptions.push(p4blameCommand);
+	context.subscriptions.push(p4diffCommand);
 	context.subscriptions.push(keeplinesCommand);
 	context.subscriptions.push(flushlinesCommand);
 	context.subscriptions.push(addsgmarksCommand);

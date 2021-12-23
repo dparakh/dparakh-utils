@@ -9,6 +9,7 @@ it provides the following commands:
 * p4edit : to open the currently open file in editor for editing.
 * p4revert : to revert the currently open file in editor.
 * p4blame : to show who/which CL was used for the last change to the current line in current file.
+* p4diff : to run a vs code based diff for the current file
 * keeplines : to only keep lines that contain a matching RegEx
 * flushlines : to remove all lines that contain a matching RegEx
 * addsgmarks : to automatically create bookmarks for SG Diagnostic Log reports (needs SGDiagBookmarkPhrases.txt in Documents folder)
@@ -54,5 +55,8 @@ Initial release of dparakh-utils
 
 * Fix Bug : If phrases file has empty lines - all files' all lines are bookmarked.
 
+### 0.0.7
+
+* Added p4diff command - runs a diff on the currently loaded file in editor, diff is done within VS Code.
 -----------------------------------------------------------------------------------------------------------
 
